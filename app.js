@@ -46,3 +46,6 @@ app.listen(port,()=>{
 app.get('/emailsend',(req,res)=>{
     res.render('emailsend');
 });
+app.get('/',(req,res)=>{
+    res.render('vocal');
+});
