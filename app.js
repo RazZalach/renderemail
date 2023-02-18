@@ -32,9 +32,10 @@ const uploadFiles=multer({
 });
    
 app.post("/register",uploadFiles.single("profilePic"),(req,res)=>{
-    let parms = req.body;
     const fileUrl = `${req.protocol}://${req.get('host')}/${req.file.path}`;
-    res.status(200).json({fileUrl,parms});
+    const { fullname, address, city } = req.body;
+    res.render('detials',{Url:fileUrl,city:city,fullName:fullname,address:address});
+    // res.status(200).json({fileUrl,parms});
 });    
 
 
