@@ -134,8 +134,8 @@
     </style>
 </head>
 <body>
-    <form method="post" enctype="multipart/form-data" action="/register" style="direction: rtl;">
-        <div class="form">
+    <div class="form" style="direction: rtl;">
+        <form onsubmit="return validateForm()" method="post" enctype="multipart/form-data" action="/register" >
             <div class="title">ברוך הבא</div>
             <div class="subtitle">טופס הרשמה</div>
             <div class="input-container ic1">
@@ -151,18 +151,45 @@
             <div class="input-container ic2">
                 <label for="city" class="placeholder"> בחר עיר</label>
                 <select id="city" name="city" class="input" >
-                    <option value="10">אשדוד</option>
-                    <option value="20">תל אביב</option>
-                    <option value="30">חיפה</option>
+                    <option value="אשדוד">אשדוד</option>
+                    <option value="תל אביב">תל אביב</option>
+                    <option value="חיפה">חיפה</option>
                 </select>  
             </div>
             <div class="input-container ic2">
-                <input class="input" type="file" name="profilePic" />
+                <input class="input" type="file" name="profilePic" id="file" />
             </div> 
             <button type="submit" name="BtnReg" class="submit">שלח טופס</button>
-        </div>
-    </form>
+        </form>
+    </div>
+
         
-    
+    <script>
+    const form = document.querySelector('form');
+    const fullName = document.getElementById('fullname');
+    const address = document.getElementById('address');
+    const city = document.getElementById('city');
+    const file = document.getElementById('file');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        // Check if any of the fields are empty
+        if (fullName.value === '' || address.value === '' || city.value === '') {
+            alert('עליך למלאות את כל השדות');
+        } else if (file.value === '') {
+            alert('בחר קובץ להעלאה'); 
+        } else {
+            // Submit the form
+            form.submit();
+        }
+    });
+</script>
+
+
+
+
+
+
 </body>
 </html>
