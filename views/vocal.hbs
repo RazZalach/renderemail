@@ -11454,14 +11454,19 @@ video.bg-video {
   
     
         <script>
-            function startSpeechRecognition() {
-            var recognition = new webkitSpeechRecognition();
-            recognition.lang = 'he-IL'; // Set language to Hebrew
-            recognition.start();
-            recognition.onresult = function(event) {
-                var result = event.results[0][0].transcript;
-                document.getElementById('speechResult').innerHTML = result;
-            };
+            function startSpeechRecognition() {   
+                var myresult = "";           
+                var recognition = new webkitSpeechRecognition();
+                recognition.lang = 'he-IL'; // Set language to Hebrew
+                recognition.start();
+                recognition.onresult = function(event) {
+                    var result = event.results[0][0].transcript;
+                    document.getElementById('speechResult').innerHTML = result;
+                    myresult += result;
+                };
+             
+              
+
             }
         </script>
 </body>
